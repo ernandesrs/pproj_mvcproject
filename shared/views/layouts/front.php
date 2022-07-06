@@ -30,8 +30,25 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="container"></div>
+    <header class="header py-3 border-bottom">
+        <div class="container d-flex align-items-center">
+            <h1 class="mb-0 h5"><?= app_name() ?></h1>
+
+            <div class="d-flex justify-content-center ml-auto">
+                <a href="<?= $router->route("front.front") ?>">Início</a>
+                <span class="text-light-dark px-3"> | </span>
+                <a href="<?= $router->route("front.blog") ?>">Blog</a>
+                <?php if ($logged) : ?>
+                    <span class="text-light-dark px-3"> | </span>
+                    <a href="<?= $router->route("dash.dash") ?>">Painel</a>
+                    <span class="text-light-dark px-3"> | </span>
+                    <a href="<?= $router->route("auth.logout") ?>">Sair</a>
+                <?php else : ?>
+                    <span class="text-light-dark px-3"> | </span>
+                    <a href="<?= $router->route("auth.login") ?>">Login</a>
+                <?php endif; ?>
+            </div>
+        </div>
     </header>
 
     <main class="main">
