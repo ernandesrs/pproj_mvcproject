@@ -2,6 +2,7 @@
 /storage/
 /vendor/
 .env
+composer.lock
 package-lock.json
 *.map
 /extras/database.mwb.bak
