@@ -1,6 +1,6 @@
 {
-    "name": "ernandes/erstockcontrol",
-    "description": "Um simples sistema de controle de estoque",
+    "name": "ernandes/mvcproject",
+    "description": "Um simples sistema PHP utilizando padrão de projeto MVC",
     "type": "project",
     "autoload": {
         "psr-4": {

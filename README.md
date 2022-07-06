@@ -1,4 +1,4 @@
-# MVCPROJ
+# MVCPROJECT
 Este é um simples sistema em PHP criado baseado no padrão de projeto MVC.
 
 ## Objetivos
