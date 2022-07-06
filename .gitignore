@@ -1,0 +1,7 @@
+/node_modules/
+/storage/
+/vendor/
+.env
+package-lock.json
+*.map
+/extras/database.mwb.bak

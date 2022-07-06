@@ -1,0 +1,42 @@
+.modal {
+    .modal-content {
+        background-color: rgb($light-light, 0.90);
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    &.modal-danger {
+        .modal-content {
+            border-color: $danger;
+            color: $danger;
+        }
+    }
+
+    &.modal-warning {
+        .modal-content {
+            border-color: $warning;
+            color: $warning;
+        }
+    }
+
+    &.modal-success {
+        .modal-content {
+            border-color: $success;
+            color: $success;
+        }
+    }
+
+    &.modal-info {
+        .modal-content {
+            border-color: $info;
+            color: $info;
+        }
+    }
+
+    &.modal-default {
+        .modal-content {
+            border-color: $secondary;
+            color: $secondary;
+        }
+    }
+}

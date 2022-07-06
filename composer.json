@@ -1,0 +1,23 @@
+{
+    "name": "ernandes/erstockcontrol",
+    "description": "Um simples sistema de controle de estoque",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "source/App/",
+            "Components\\": "source/Components/"
+        },
+        "files": [
+            "source/Config/config.php",
+            "source/Config/functionsLoader.php",
+            "source/Config/resources.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Ernandes R Souza",
+            "email": "ernandesrsouza@gmail.com"
+        }
+    ],
+    "require": {}
+}

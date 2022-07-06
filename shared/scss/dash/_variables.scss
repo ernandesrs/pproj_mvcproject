@@ -1,0 +1,46 @@
+$sidebar-width: 225px;
+
+$primary: rgb(85, 200, 220);
+$primary-light: rgb(113, 203, 219);
+$primary-dark: rgb(49, 184, 208);
+
+$secondary: rgb(61, 61, 61);
+$secondary-light: rgb(75, 75, 75);
+$secondary-dark: rgb(45, 45, 45);
+
+$light: rgb(230, 230, 230);
+$light-light: rgb(250, 250, 250);
+$light-dark: rgb(210, 210, 210);
+
+$dark: rgb(61, 61, 61);
+$dark-light: rgb(75, 75, 75);
+$dark-dark: rgb(45, 45, 45);
+
+$blue: #598ec7 !default;
+$indigo: rgb(131, 101, 179) !default;
+$purple: #8b7baa !default;
+$pink: #c6598c !default;
+$red: rgb(217, 120, 130) !default;
+$orange: #e7934e !default;
+$yellow: #e2c262 !default;
+$green: #77c189 !default;
+$teal: #6fd5b7 !default;
+$cyan: #6abcc8 !default;
+
+$theme-colors: (
+    "primary": $primary,
+    "primary-light": $primary-light,
+    "primary-dark": $primary-dark,
+
+    "secondary": $secondary,
+    "secondary-light": $secondary-light,
+    "secondary-dark": $secondary-dark,
+
+    "light": $light,
+    "light-light": $light-light,
+    "light-dark": $light-dark,
+
+    "dark": $dark,
+    "dark-light": $dark-light,
+    "dark-dark": $dark-dark,
+    ) !default;

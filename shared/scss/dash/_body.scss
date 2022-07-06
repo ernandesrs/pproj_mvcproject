@@ -1,0 +1,302 @@
+body {
+    display: grid;
+    grid-template-areas: "content";
+    grid-template-columns: auto;
+    background-color: $light-light;
+    min-height: 100vh;
+    color: $dark;
+
+    .pagination {
+        .page-item {
+            margin: 0 $spacer / 5;
+
+            .page-link {
+                background-color: rgb($light, 0.25);
+                padding-top: $spacer / 2.5;
+                padding-bottom: $spacer / 2.5;
+                border-radius: $spacer / 4;
+                border-color: rgb($light, 0.5);
+                color: $dark-light;
+            }
+
+            &.disabled {
+                .page-link {
+                    background-color: rgb($light, 0.75);
+                    color: $primary-dark;
+                }
+            }
+        }
+    }
+
+    .photo {
+        background-color: transparent!important;
+        
+        img {
+            background-color: rgb($light-dark, 0.75);
+            border: 0;
+        }
+
+        &.no-photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            span {
+                position: absolute;
+                font-size: 2.5rem;
+                font-weight: 600;
+                color: rgb($dark-light, 0.35);
+            }
+        }
+
+    }
+
+    .icon {
+        &.loading {
+            &::before {
+                animation-name: rotateCircle;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease;
+                animation-fill-mode: both;
+                animation-play-state: running;
+
+                @keyframes rotateCircle {
+                    to {
+                        transform: rotateZ(360deg);
+                    }
+                }
+            }
+        }
+    }
+
+    .sidebar {
+        grid-area: "sidebar";
+        background-color: $dark;
+        min-width: $sidebar-width;
+        height: 100%;
+        max-height: 100vh;
+        overflow-y: auto;
+        color: $light-dark;
+
+        &.mobile {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 999;
+        }
+
+        .profile {
+            padding: $spacer / 2 0 $spacer 0;
+            cursor: default;
+
+            .photo {
+                max-width: 45px;
+                height: 45px;
+
+                &.no-photo {
+                    span {
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            .info {
+                .username {
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .sidebar-elements {
+            background-color: rgb($white, 0.125);
+            padding-left: $spacer;
+            padding-right: $spacer;
+            border-top: 5px solid rgb($primary-dark, 0.5);
+            border-radius: $spacer / 1.5 $spacer / 1.5;
+            box-shadow: 0 0 6px 2px rgb($dark-light, 0.125);
+
+            .element {
+                padding: $spacer / 2 0 $spacer 0;
+
+                .title {
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                    color: $light;
+                    text-transform: uppercase;
+                }
+
+                .nav {
+                    .nav-item {
+                        .nav-link {
+                            &.active {
+                                background-color: rgb($white, 0.06125);
+                                color: $light-dark;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .main {
+        grid-area: "content";
+        background-color: $light-light;
+        height: 100%;
+        max-height: 100vh;
+        overflow-y: auto;
+
+        .main-bar {
+            background-color: transparent;
+
+            .btn-sidebar-toggler {
+                background-color: transparent;
+                font-size: 1.5rem;
+                padding: 0;
+                color: $dark-light;
+                position: relative;
+                z-index: 999;
+
+                &:hover {
+                    color: rgb($dark-light, 0.25);
+                }
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            .breadcrumb {
+                background-color: transparent;
+                padding-top: $spacer / 2.5;
+                padding-bottom: $spacer / 2.5;
+                margin-bottom: 0;
+            }
+        }
+
+        .section {
+            margin-bottom: $spacer;
+
+            .section-header {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                padding: $spacer 0;
+
+                .left-side {
+                    .title {
+                        font-size: 1.2rem;
+                        margin-bottom: 0;
+                        font-weight: 600;
+                        color: $dark-light;
+                    }
+                }
+
+                .right-side {
+                    .filter-bar {
+                        background-color: transparent;
+                    }
+                }
+
+            }
+
+            .section-content {
+                background-color: $white;
+                padding: $spacer / 2 $spacer;
+                border: 1px solid $light;
+
+                .list-items {
+                    .list-item {
+                        &:hover {
+                            box-shadow: 0 0 8px 0 rgb($dark-light, 0);
+                        }
+                    }
+                }
+            }
+
+            &.section-overview {
+                background-color: transparent;
+
+                .section-content {
+                    .overview-boxes-list {
+                        .overview-boxes-item {
+                            background-color: rgb($light-light, 0.35);
+
+                            .icon {
+                                font-size: 3rem;
+                                margin-right: $spacer;
+                                color: rgb($dark-light, 0.25);
+                            }
+
+                            .title {
+                                font-size: 1rem;
+                                font-weight: 600;
+                                color: $dark-light;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.section-users {
+                .section-content {
+                    .list-items {
+                        .list-item {
+                            background-color: rgb($light-dark, 0);
+
+                            &.user {
+                                .photo {
+                                    width: 125px;
+                                    height: 125px;
+                                }
+
+                                .username,
+                                .fullname,
+                                .email {
+                                    padding-bottom: $spacer / 6;
+                                    white-space: nowrap;
+                                    overflow-x: hidden;
+                                }
+
+                                .username {
+                                    font-size: 1.2rem;
+                                    font-weight: 600;
+                                    text-transform: uppercase;
+                                }
+
+                                .fullname,
+                                .email {
+                                    color: $dark-light;
+                                }
+
+                                .fullname {
+                                    font-size: 1rem;
+                                }
+
+                                .email {
+                                    font-size: 0.875rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.section-user-edit {
+                .photo {
+                    width: 275px;
+                    height: 275px;
+
+                    &.no-photo {
+                        span {
+                            font-size: 5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

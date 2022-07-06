@@ -1,0 +1,25 @@
+.alert {
+    display: none;
+    border-left-width: 8px;
+    border-right-width: 8px;
+
+    .alert-heading {
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .alert-body {
+        font-size: 1rem;
+    }
+
+    &.alert-float {
+        position: fixed;
+        top: $spacer / 2;
+        right: $spacer * 2;
+        z-index: 999;
+        width: 100%;
+        max-width: 325px;
+        box-shadow: 0 0 24px -6px rgb($dark-light, 0.25);
+    }
+}

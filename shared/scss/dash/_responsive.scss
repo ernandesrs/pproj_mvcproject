@@ -1,0 +1,10 @@
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {
+    body {
+        grid-template-areas: "sidebar content";
+        grid-template-columns: $sidebar-width auto;
+    }
+}
+
+@media (min-width: 1200px) {}
