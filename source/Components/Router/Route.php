@@ -51,6 +51,14 @@ abstract class Route
             return false;
         }
 
+        /**
+         * 
+         * inserindo dados de parâmetros da rota na variável global $_GET
+         * 
+         */
+        if ($params = $this->currentRoute["params"])
+            $_GET = ($_GET ?? []) + $params;
+
         (new $class($this))->$method();
 
         return true;
@@ -75,6 +83,7 @@ abstract class Route
          * buscando por rotas
          * 
          */
+        $data = [];
         $urlArrayString = "";
         $urlArray = explode("/", $url);
         for ($i = count($urlArray) - 1; $i >= 0; $i--) {
@@ -83,7 +92,10 @@ abstract class Route
             if (!empty($urlArrayString) && array_key_exists($urlArrayString, $this->routes[$requestMethod])) {
                 $this->currentRoute = $this->routes[$requestMethod][$urlArrayString];
                 break;
-            } else $urlArray[$i] = "{var}";
+            } else {
+                $data[] = $urlArray[$i];
+                $urlArray[$i] = "{var}";
+            }
         }
 
         if (!$this->currentRoute) {
@@ -94,6 +106,12 @@ abstract class Route
         if (empty($this->currentRoute["namespace"])) {
             throw new Exception("Namespace não definido");
             return false;
+        }
+
+        $param = 0;
+        foreach ($this->currentRoute["params"] as $key => $value) {
+            $this->currentRoute["params"][$key] = $data[$param];
+            $param++;
         }
 
         return true;
