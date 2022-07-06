@@ -127,16 +127,54 @@ abstract class Route
         if (count($this->routes) == 0)
             return null;
 
+        /**
+         * 
+         * obtém possíveis rotas para o $name informado
+         * 
+         */
+        $matcheds = [];
         foreach ($this->routes as $route) {
             if (count($route) == 0)
                 return null;
 
             foreach ($route as $r) {
-                if ($r["name"] === $name) {
-                    $url = $r["url"] === "/" ? $this->urlBase : $this->urlBase . $r["url"];
+                if ($r["name"] === $name)
+                    $matcheds[] = $r;
+            }
+        }
 
-                    return count($args) > 0 ? $url .= "?" . http_build_query($args) : $url;
+        arsort($matcheds);
+
+        /**
+         * 
+         * procura pela rota correta levando em consideração
+         * os parâmetros para cada rota e os valores de parâmetros passados em $args
+         * 
+         */
+        foreach ($matcheds as $matched) {
+            $has = 0;
+            foreach (array_keys($matched["params"]) as $key) {
+                if (key_exists($key, $args))
+                    $has++;
+            }
+
+            if ($has === count($matched["params"])) {
+
+                $url = explode("/", $matched["url"]);
+                $count = count($url) - 1;
+
+                foreach (array_keys($matched["params"]) as $key) {
+                    $url[$count] = $args[$key];
+                    unset($args[$key]);
+                    $count--;
                 }
+
+                $url = implode("/", $url);
+
+                if (count($args))
+                    $url .= "?" . http_build_query($args);
+
+                return $this->urlBase . $url;
             }
         }
 
