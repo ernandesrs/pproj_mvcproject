@@ -14,7 +14,8 @@ $router->get("/", "IndexController@index", "front.front");
 
 $router->get("/blog", "BlogController@index", "front.blog");
 $router->get("/blog/{article}", "BlogController@article", "front.blog.article");
-$router->get("/blog/{category}", "BlogController@category", "front.blog.category");
+$router->get("/blog/categoria/{category}", "BlogController@category", "front.blog.category");
+$router->get("/blog/categoria/{category}/{page}", "BlogController@category", "front.blog.category");
 
 $router->get("/error", "IndexController@error", "front.error");
 

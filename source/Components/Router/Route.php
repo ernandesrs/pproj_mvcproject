@@ -63,18 +63,34 @@ abstract class Route
     {
         $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-        $url = $this->getUrl();
         if (!array_key_exists($requestMethod, $this->routes)) {
             $this->errno = self::NOTIMPLEMENTED;
             return false;
         }
 
-        if (!array_key_exists($url, $this->routes[$requestMethod])) {
+        $url = $this->getUrl();
+
+        /**
+         * 
+         * buscando por rotas
+         * 
+         */
+        $urlArrayString = "";
+        $urlArray = explode("/", $url);
+        for ($i = count($urlArray) - 1; $i >= 0; $i--) {
+            $urlArrayString = implode("/", $urlArray);
+
+            if (!empty($urlArrayString) && array_key_exists($urlArrayString, $this->routes[$requestMethod])) {
+                $this->currentRoute = $this->routes[$requestMethod][$urlArrayString];
+                break;
+            } else $urlArray[$i] = "{var}";
+        }
+
+        if (!$this->currentRoute) {
             $this->errno = self::NOTFOUND;
             return false;
         }
 
-        $this->currentRoute = $this->routes[$requestMethod][$url];
         if (empty($this->currentRoute["namespace"])) {
             throw new Exception("Namespace não definido");
             return false;
@@ -150,8 +166,18 @@ abstract class Route
         if ($url == "/")
             return $url;
 
+        /**
+         * 
+         * remoção de parâmetros não amigáveis
+         * 
+         */
         $url = strpos($url, "?") !== false ? substr($url, 0, strpos($url, "?")) : $url;
 
-        return $url;
+        /**
+         * 
+         * remoção da última '/' se houver
+         * 
+         */
+        return $url[strlen($url) - 1] == "/" ? substr($url, 0, strlen($url) - 1) : $url;
     }
 }

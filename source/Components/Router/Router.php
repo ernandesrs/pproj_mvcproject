@@ -62,12 +62,31 @@ class Router extends Route
             return false;
         }
 
+        /**
+         * 
+         * obtendo parâmetros
+         * definindo variáveis para os parâmetros na url
+         * 
+         */
+        $params = [];
+        $urlArr = explode("/", $url);
+        for ($i = count($urlArr) - 1; $i >= 0; $i--) {
+            if (strpos($urlArr[$i], "{") !== false && strpos($urlArr[$i], "}") !== false) {
+                $params[str_replace(["{", "}"], "", $urlArr[$i])] = null;
+                $urlArr[$i] = "{var}";
+            }
+        }
+
+        $url = implode("/", $urlArr);
+
         $this->routes[$method][$url] = [
             "namespace" => $this->namespace,
             "url" => $url,
             "action" => $action,
             "name" => $name,
+            "params" => $params
         ];
+
         return true;
     }
 }
