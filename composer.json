@@ -9,7 +9,7 @@
         },
         "files": [
             "source/Config/config.php",
-            "source/Config/functionsLoader.php",
+            "source/App/Helpers/Functions/loader.php",
             "source/Config/resources.php"
         ]
     },
