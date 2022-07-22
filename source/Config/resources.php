@@ -1,6 +1,6 @@
 <?php
 
-if (CONF_APP_LOCAL !== "dev")
+if (!CONF_APP_LOCAL)
     return;
 
 /**
