@@ -3,9 +3,10 @@ body {
     background-color: $dark-dark;
     width: 100%;
     min-height: 100vh;
-    color: $light;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.938rem;
+    color: $light-dark;
 
     .icon {
         &.loading {
@@ -25,6 +26,12 @@ body {
             }
         }
     }
+
+    .btn {
+        font-size: 0.938rem;
+        border-radius: $border-radius * 2;
+        padding: $spacer / 1.5 $spacer * 1.5;
+    }
 }
 
 .header {
@@ -32,6 +39,8 @@ body {
     max-width: 95px;
     height: 100vh;
     padding: 12px;
+    position: fixed;
+    z-index: 99;
 
     .header-inner {
         width: 100%;
@@ -124,15 +133,245 @@ body {
 }
 
 .main {
-    // background: radial-gradient(53.87% 146.71% at 11.23% 34.42%, #19191A 29.42%, rgba(0, 0, 0, 0) 100%);
-    background-image: url(./../../images/background.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
+    width: calc(100% - 95px);
+    min-height: 100vh;
+    margin-left: 95px;
+}
 
-    .main-inner {
+.section {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    padding: $spacer * 5 0;
+
+    &::before,
+    &::after {
+        content: "";
+        width: 100%;
         height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &::before {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+    }
+
+    &::after {
+        z-index: 2;
+    }
+
+    .section-inner {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: relative;
+        z-index: 3;
+    }
+}
+
+.slide {
+    &::before {
+        background-image: url(./../../images/background.jpg);
+    }
+
+    .slide-inner {
+        .suptitle {
+            font-family: "Nothing You Could Do";
+            font-size: 1.2rem;
+            border-left: 0.625rem solid $primary;
+            padding-left: calc(0.625rem * 1.5);
+            padding-top: calc(0.625rem / 1.5);
+        }
+
+        .title {
+            font-size: 1.4rem;
+        }
+
+        .buttons {
+            text-align: center;
+
+            .btn {
+                margin-right: $spacer / 2;
+                margin-bottom: $spacer;
+            }
+        }
+    }
+
+}
+
+.skill {
+    &::before {
+        background-image: url(./../../images/background_2.png);
+        z-index: 2;
+    }
+
+    &::after {
+        z-index: 1;
+    }
+
+    .skill-inner {
+
+        .title,
+        .subtitle {
+            font-weight: 600;
+        }
+
+        .title {
+            // font-size: 1.8rem;
+            font-size: 1.4rem;
+        }
+
+        .subtitle {
+            // font-size: 1.1rem;
+            font-size: 1rem;
+        }
+
+        .subtitle-2 {
+            font-weight: 500;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0 0 0 $spacer * 1.1;
+            margin: 0;
+            position: relative;
+
+            &::before {
+                content: "";
+                background-color: $primary;
+                width: 0.625rem;
+                height: 100%;
+                border-radius: $border-radius / 4;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .skill-list-item {
+                background-color: $primary-dark;
+                position: relative;
+                padding: $spacer / 4 $spacer;
+                margin-bottom: $spacer / 2;
+                border-radius: $border-radius / 2;
+
+                .percent {
+                    height: 100%;
+                    background-color: $primary;
+                    padding: $spacer / 4 $spacer;
+                    border-radius: $border-radius / 2;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                }
+
+                .text {
+                    position: relative;
+                    z-index: 2;
+                }
+            }
+        }
+
+        .buttons {
+            .btn {
+                margin-right: $spacer / 2;
+                margin-bottom: $spacer;
+            }
+        }
+    }
+}
+
+.portfolio {
+    .portfolio-inner {
+        .title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding-bottom: $spacer;
+        }
+
+        .projects-list {
+            .projects-list-item {
+                transition-duration: 0.375s;
+                overflow: hidden;
+
+                .inner {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: $border-radius;
+                    text-align: center;
+                    cursor: pointer;
+
+                    .img-fluid {
+                        opacity: 0.9;
+                        border-radius: $border-radius;
+                    }
+
+                    .project-info {
+                        background-color: rgb(#000, 0.8);
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        border-radius: $border-radius;
+                        padding: $spacer / 1.5;
+                        text-align: center;
+                        margin: 0 $spacer / 2;
+                        display: none;
+
+                        a {
+                            color: $light-dark;
+
+                            &:hover {
+                                text-decoration: none;
+                            }
+
+                            .title {
+                                font-size: 1rem;
+                                font-weight: 600;
+                                text-transform: uppercase;
+                                margin-bottom: 0;
+                            }
+
+                            .description {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+
+
+                    &:hover {
+                        transition-duration: 0.375s;
+
+                        .img-fluid {
+                            opacity: 1;
+                        }
+
+                        .project-info {
+                            display: block;
+
+                            animation-name: projectinfoanimation;
+                            animation-duration: 0.375s;
+                            animation-iteration-count: 1;
+                            cursor: default;
+                        }
+
+                        @keyframes projectinfoanimation {
+                            0% {
+                                transform: translateY(100%);
+                            }
+
+                            100% {
+                                transform: translateY(0%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

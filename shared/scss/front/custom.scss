@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nothing+You+Could+Do&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nothing+You+Could+Do&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
+@font-face {
+    font-family: "Montserrat";
+    src: url("./../../fonts/Montserrat/Montserrat-Regular.ttf"),
+        url("./../../fonts/Montserrat/Montserrat-Medium.ttf"),
+        url("./../../fonts/Montserrat/Montserrat-Bold.ttf");
+}
 
 @import "./variables";
 

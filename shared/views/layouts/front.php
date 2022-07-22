@@ -16,8 +16,8 @@
     <?php
 
     $styles = [
+        "bootstrap-icons.css",
         "front/custom.css",
-        "bootstrap-icons.css"
     ];
 
     foreach ($styles as $style) {
@@ -34,19 +34,19 @@
     <header class="header">
         <div class="header-inner">
             <nav class="nav flex-column">
-                <a class="nav-link active" href="">
+                <a class="nav-link active" href="<?= $router->route("front.index") ?>">
                     <i class="icon bi bi-house-fill"></i>
                     <span class="text">início</span>
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="#skill">
                     <i class="icon bi bi-person-lines-fill"></i>
                     <span class="text">habilidades</span>
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="#portfolio">
                     <i class="icon bi bi-briefcase-fill"></i>
                     <span class="text">portfólio</span>
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="#contact">
                     <i class="icon bi bi-messenger"></i>
                     <span class="text">contato</span>
                 </a>
@@ -55,7 +55,7 @@
     </header>
 
     <main class="main">
-        <div class="main-inner"></div>
+        <?= $this->section("content") ?>
     </main>
 
     <?php
