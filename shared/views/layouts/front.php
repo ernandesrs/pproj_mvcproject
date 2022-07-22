@@ -30,42 +30,33 @@
 </head>
 
 <body>
-    <header class="header py-3 border-bottom">
-        <div class="container d-flex align-items-center">
-            <h1 class="mb-0 h5"><?= app_name() ?></h1>
 
-            <div class="d-flex justify-content-center ml-auto">
-                <a href="<?= $router->route("front.front") ?>">Início</a>
-                <span class="text-light-dark px-3"> | </span>
-                <a href="<?= $router->route("front.blog") ?>">Blog</a>
-                <?php if ($logged) : ?>
-                    <span class="text-light-dark px-3"> | </span>
-                    <a href="<?= $router->route("dash.dash") ?>">Painel</a>
-                    <span class="text-light-dark px-3"> | </span>
-                    <a href="<?= $router->route("auth.logout") ?>">Sair</a>
-                <?php else : ?>
-                    <span class="text-light-dark px-3"> | </span>
-                    <a href="<?= $router->route("auth.login") ?>">Login</a>
-                <?php endif; ?>
-            </div>
+    <header class="header">
+        <div class="header-inner">
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="">
+                    <i class="icon bi bi-house-fill"></i>
+                    <span class="text">início</span>
+                </a>
+                <a class="nav-link" href="">
+                    <i class="icon bi bi-person-lines-fill"></i>
+                    <span class="text">habilidades</span>
+                </a>
+                <a class="nav-link" href="">
+                    <i class="icon bi bi-briefcase-fill"></i>
+                    <span class="text">portfólio</span>
+                </a>
+                <a class="nav-link" href="">
+                    <i class="icon bi bi-messenger"></i>
+                    <span class="text">contato</span>
+                </a>
+            </nav>
         </div>
     </header>
 
     <main class="main">
-        <div class="container">
-            <div class="message-area mt-2">
-                <?php if ($flash = message_flash()) {
-                    echo $flash->render();
-                } ?>
-            </div>
-        </div>
-
-        <?= $v->section("content") ?>
+        <div class="main-inner"></div>
     </main>
-
-    <footer class="footer">
-        <div class="container"></div>
-    </footer>
 
     <?php
 

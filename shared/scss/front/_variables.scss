@@ -1,8 +1,8 @@
 $sidebar-width: 225px;
 
-$primary: rgb(85, 200, 220);
-$primary-light: rgb(113, 203, 219);
-$primary-dark: rgb(49, 184, 208);
+$primary: #437EA8;
+$primary-light: #354958;
+$primary-dark: #2D373F;
 
 $secondary: rgb(61, 61, 61);
 $secondary-light: rgb(75, 75, 75);
@@ -12,9 +12,9 @@ $light: rgb(230, 230, 230);
 $light-light: rgb(250, 250, 250);
 $light-dark: rgb(210, 210, 210);
 
-$dark: rgb(61, 61, 61);
-$dark-light: rgb(75, 75, 75);
-$dark-dark: rgb(45, 45, 45);
+$dark: #1F1F1F;
+$dark-light: #2F2F2F;
+$dark-dark: #0E0E0E;
 
 $blue: #598ec7 !default;
 $indigo: rgb(131, 101, 179) !default;
@@ -44,3 +44,5 @@ $theme-colors: (
     "dark-light": $dark-light,
     "dark-dark": $dark-dark,
     ) !default;
+
+$border-radius: 0.75rem;

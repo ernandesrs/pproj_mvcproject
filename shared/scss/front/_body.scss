@@ -1,30 +1,11 @@
 body {
-    background-color: $light-light;
+    display: flex;
+    background-color: $dark-dark;
     width: 100%;
     min-height: 100vh;
-    color: $dark;
-
-    .pagination {
-        .page-item {
-            margin: 0 $spacer / 5;
-
-            .page-link {
-                background-color: rgb($light, 0.25);
-                padding-top: $spacer / 2.5;
-                padding-bottom: $spacer / 2.5;
-                border-radius: $spacer / 4;
-                border-color: rgb($light, 0.5);
-                color: $dark-light;
-            }
-
-            &.disabled {
-                .page-link {
-                    background-color: rgb($light, 0.75);
-                    color: $primary-dark;
-                }
-            }
-        }
-    }
+    color: $light;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 
     .icon {
         &.loading {
@@ -44,11 +25,114 @@ body {
             }
         }
     }
+}
 
-    .main {
-        background-color: $light-light;
+.header {
+    width: 100%;
+    max-width: 95px;
+    height: 100vh;
+    padding: 12px;
+
+    .header-inner {
+        width: 100%;
         height: 100%;
-        max-height: 100vh;
-        overflow-y: auto;
+        background-color: $dark;
+        border-radius: $border-radius;
+        padding: 10px;
+
+        .nav {
+            align-items: center;
+
+            .nav-link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 3rem;
+                height: 3rem;
+                padding: 0;
+                border-radius: $border-radius;
+                margin-bottom: $spacer / 2;
+                color: $light-dark;
+                position: relative;
+                z-index: 1;
+
+                * {
+                    position: relative;
+                    z-index: 4;
+                }
+
+                &::after {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background-color: $primary-dark;
+                    border-radius: $border-radius;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 3;
+                }
+
+                .icon {
+                    font-size: 1.6rem;
+                }
+
+                .text {
+                    display: none;
+                }
+
+                &:hover {
+                    color: $primary;
+
+                    .text {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: $primary-light;
+                        width: 100%;
+                        height: 3rem;
+                        position: absolute;
+                        z-index: 2;
+                        left: 0;
+                        border-radius: $border-radius;
+                        color: $light-dark;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                        overflow: hidden;
+
+                        animation-name: showMenuItemName;
+                        animation-duration: 0.375s;
+                        animation-timing-function: linear;
+                        animation-fill-mode: both;
+                        animation-iteration-count: 1;
+                    }
+
+                    @keyframes showMenuItemName {
+                        0% {
+                            width: 3rem;
+                        }
+
+                        100% {
+                            width: 10.938rem;
+                            left: calc(3rem + 2px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main {
+    // background: radial-gradient(53.87% 146.71% at 11.23% 34.42%, #19191A 29.42%, rgba(0, 0, 0, 0) 100%);
+    background-image: url(./../../images/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+
+    .main-inner {
+        height: 100%;
     }
 }
